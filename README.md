@@ -1,23 +1,31 @@
-# prd-manager
+# prd-manager v2.0.0
 
 一个辅助 Vibe Coding 的 Skill 工具，通过生成结构化的版本需求文档，来指导 AI 进行 Coding ，提升 Coding 的准确性。
+
+**当前版本**：v2.0.0 | [版本历史](VERSION_HISTORY.md)
 
 ## 事前确认流程
 
 默认按以下顺序推进：
 
-`prd.md（确认） → design.md / dev.md（确认） → plan.md → docs/prd/README.md`
+`prd.md（确认） → design.md / dev.md（确认） → plan.md → ops.md / test.md → CHANGELOG.md / CLAUDE.md → docs/prd/README.md`
 
 其中：
 
 - `prd.md` 生成后需要用户确认，再进入设计和技术文档阶段
 - `dev.md` 生成后需要再次确认，再输出开发计划
 - `plan.md` 只负责排期、任务、风险，不重复技术实现内容
+- `ops.md` 和 `test.md` 在开发阶段同步完善，确保可部署、可测试
+- `CHANGELOG.md` 和 `CLAUDE.md` 作为项目记忆体，随项目演进持续更新
 
 ## 能力范围
 
-- **生成模式**：从零产出完整项目文档链路，覆盖 `prd.md`、`design.md`、`plan.md`、`dev.md`
+- **生成模式**：从零产出完整项目文档链路，覆盖 `prd.md`、`design.md`、`dev.md`、`plan.md`、`ops.md`、`test.md`、`CHANGELOG.md`、`CLAUDE.md`
 - **管理模式**：维护已有 `docs/prd/<version>/` 文档，支持查看、扩展、对比、搜索、归档
+- **迭代模式**：支持语义化版本管理（major.minor.patch），自动识别变更类型并更新版本号
+- **测试驱动**：强制要求代码变更必须同步更新测试，支持 PRD ↔ Code 双向验证
+- **运维支持**：提供完整的部署、监控、故障排查、回滚流程文档
+- **事故记录**：提供事故记录模板，沉淀经验、防止重复发生
 - **索引维护**：同步更新 `docs/prd/README.md`，保持版本摘要倒序展示
 
 ## 安装方式
@@ -25,17 +33,21 @@
 如果你通过 Skill 目录安装，可参考：
 
 ```bash
-git clone https://github.com/kociii/prd-manager ~/.claude/skills/prd-manager
+git clone https://github.com/wlzh/prd-manager ~/.claude/skills/prd-manager
 ```
 
 ## 适用场景
 
-- **从零建文档**：为新项目或新版本初始化完整 PRD 文档链路
+- **从零建文档**：为新项目或新版本初始化完整 PRD 文档链路（8 种文档类型）
 - **增量补需求**：在已有版本中新增需求，并同步补充设计、计划或技术文档
 - **版本治理**：查看版本状态、维护摘要索引、归档旧版本
 - **版本对比**：对比不同版本之间的需求、优先级和计划变化
 - **跨版本检索**：按主题搜索历史需求，如认证、支付、通知
 - **前后端协作**：让 `prd.md`、`design.md`、`plan.md`、`dev.md` 各自聚焦单一职责
+- **测试驱动开发**：强制要求代码变更必须同步更新测试，支持 PRD ↔ Code 双向验证
+- **运维自动化**：提供完整的部署、监控、故障排查、回滚流程文档
+- **事故复盘**：提供事故记录模板，沉淀经验、防止重复发生
+- **AI 协作**：通过 CLAUDE.md 为 AI 助手提供项目上下文，提升协作效率
 
 ## 确认输出边界
 
@@ -43,14 +55,20 @@ git clone https://github.com/kociii/prd-manager ~/.claude/skills/prd-manager
 |------|--------|
 | `prd.md` | 做什么、为什么：功能需求、用户故事、验收标准、业务目标 |
 | `design.md` | 长什么样：页面结构、交互流程、组件清单、ASCII 原型 |
-| `plan.md` | 何时做、谁来做：任务拆解、时间线、里程碑、风险 |
 | `dev.md` | 如何实现：技术架构、数据模型、接口影响、文件变更 |
+| `plan.md` | 何时做、谁来做：任务拆解、时间线、里程碑、风险 |
+| `ops.md` | 如何部署和运维：环境变量、部署流程、监控告警、故障排查、回滚 |
+| `test.md` | 如何测试和验证：测试策略、用例设计、自动化测试、验收标准 |
+| `CHANGELOG.md` | 版本历史：变更记录、迁移指南、破坏性变更 |
+| `CLAUDE.md` | AI 协作：项目上下文、技术栈、开发规范、关键决策、给 AI 的元规则 |
 
 该 Skill 强调文档边界明确：
 
 - 不把技术方案写进 `prd.md`
 - 不把用户故事写进 `dev.md`
 - 不把数据模型和接口定义写进 `plan.md`
+- 不把部署流程写进 `dev.md`
+- 不把测试用例写进 `prd.md`
 
 这也是该 Skill 最重要的约束：**每份文档只回答一个问题**。
 
@@ -59,6 +77,75 @@ git clone https://github.com/kociii/prd-manager ~/.claude/skills/prd-manager
 - **前端项目**：`design.md` 为必含文档，重点描述页面结构、交互和组件设计
 - **后端项目**：`dev.md` 为核心文档，需包含接口影响清单
 - **涉及数据库变更**：应额外输出独立 SQL 文件，如 `sql/DDL.sql` 与 `sql/DML_init.sql`
+- **生产环境项目**：`ops.md` 和 `test.md` 为必含文档，确保可部署、可测试、可监控
+- **团队协作项目**：`CLAUDE.md` 为必含文档，为 AI 助手提供项目上下文，提升协作效率
+
+## 版本管理策略
+
+### 语义化版本规则
+
+- **主版本号（Major）**：不兼容的 API 变更、架构重构、破坏性变更
+- **次版本号（Minor）**：向下兼容的功能新增、模块扩展
+- **修订号（Patch）**：向下兼容的问题修复、性能优化、文档更新
+
+### 迭代触发条件
+
+| 变更类型 | 版本号变化 | 示例 |
+|---------|-----------|------|
+| 破坏性变更 | Major + 1 | v1.0.0 → v2.0.0 |
+| 新增功能模块 | Minor + 1 | v1.0.0 → v1.1.0 |
+| Bug 修复 | Patch + 1 | v1.0.0 → v1.0.1 |
+
+### 目录结构支持
+
+支持两种目录结构模式：
+
+#### 模式 A：版本优先（推荐用于快速迭代项目）
+
+```
+docs/
+├── v1.0.0/
+│   ├── prd.md
+│   ├── design.md
+│   ├── dev.md
+│   ├── plan.md
+│   ├── ops.md
+│   └── test.md
+├── v1.1.0/
+│   └── ...
+├── CHANGELOG.md
+└── CLAUDE.md
+```
+
+#### 模式 B：类型优先（推荐用于文档驱动项目）
+
+```
+docs/
+├── prd/
+│   ├── v1.0.0/
+│   │   └── prd.md
+│   └── v1.1.0/
+│       └── prd.md
+├── design/
+│   └── v1.0.0/
+│       └── design.md
+├── dev/
+│   └── v1.0.0/
+│       └── dev.md
+├── plan/
+│   └── v1.0.0/
+│       └── plan.md
+├── ops/
+│   └── v1.0.0/
+│       └── ops.md
+├── test/
+│   └── v1.0.0/
+│       └── test.md
+├── CHANGELOG.md
+└── CLAUDE.md
+```
+
+Skill 会自动识别项目使用的目录结构模式，并按对应模式生成文档。
 
 ## 输入示例
 
@@ -76,13 +163,18 @@ git clone https://github.com/kociii/prd-manager ~/.claude/skills/prd-manager
 
 ```text
 .
-├── SKILL.md
+├── SKILL_v2.md              # Skill 定义文件（v2 增强版）
 ├── assets/
-│   ├── prd_template.md
-│   ├── design_template.md
-│   ├── plan_template.md
-│   ├── dev_template.md
-│   └── readme_template.md
+│   ├── prd_template.md      # PRD 文档模板
+│   ├── design_template.md   # 设计文档模板
+│   ├── dev_template.md      # 技术开发文档模板
+│   ├── plan_template.md     # 开发计划模板
+│   ├── ops_template.md      # 运维文档模板（新增）
+│   ├── test_template.md     # 测试文档模板（新增）
+│   ├── incident_template.md # 事故记录模板（新增）
+│   ├── changelog_template.md # 变更日志模板（新增）
+│   ├── claude_template.md   # CLAUDE.md 项目记忆体模板（新增）
+│   └── readme_template.md   # README 索引模板
 ├── references/
 ├── agents/
 └── evals/
@@ -101,6 +193,64 @@ git clone https://github.com/kociii/prd-manager ~/.claude/skills/prd-manager
 - 对比版本差异
 - 搜索需求
 - 归档版本
+- 迭代版本管理（语义化版本）
+- 测试驱动开发（PRD ↔ Code 双向验证）
+- 运维文档生成（部署、监控、故障排查）
+- 事故记录与复盘
+- CLAUDE.md 项目记忆体维护
+
+## 核心特性
+
+### 1. 完整的文档生命周期管理
+
+从需求分析到部署运维，覆盖项目全生命周期的 8 种文档类型：
+
+- **需求阶段**：`prd.md`（功能需求）、`design.md`（UI/UX 设计）
+- **开发阶段**：`dev.md`（技术实现）、`plan.md`（开发计划）
+- **测试阶段**：`test.md`（测试策略、用例设计、自动化测试）
+- **运维阶段**：`ops.md`（部署流程、监控告警、故障排查）
+- **迭代阶段**：`CHANGELOG.md`（版本历史、变更记录）
+- **协作阶段**：`CLAUDE.md`（AI 协作、项目上下文）
+
+### 2. 语义化版本管理
+
+- 自动识别变更类型（破坏性变更 / 功能新增 / Bug 修复）
+- 自动更新版本号（major.minor.patch）
+- 自动维护 CHANGELOG.md
+- 支持版本对比、搜索、归档
+
+### 3. 测试驱动开发
+
+- 强制要求代码变更必须同步更新测试
+- 支持 PRD ↔ Code 双向验证（需求 → 代码 → 测试 → 验收）
+- 提供完整的测试策略、用例设计、自动化测试文档
+
+### 4. 运维自动化
+
+- 提供完整的部署流程文档（环境变量、部署步骤、验证）
+- 提供监控告警配置（关键指标、告警规则、告警渠道）
+- 提供故障排查手册（常见问题、排查步骤、解决方案）
+- 提供回滚方案（代码回滚、数据库回滚、验证步骤）
+
+### 5. 事故记录与复盘
+
+- 提供事故记录模板（事故概要、时间线、影响评估、根因分析）
+- 提供 5 Why 分析框架
+- 提供预防措施清单（短期 / 中期 / 长期）
+- 沉淀经验、防止重复发生
+
+### 6. AI 协作增强
+
+- 通过 CLAUDE.md 为 AI 助手提供项目上下文
+- 记录关键架构决策（ADR）
+- 记录已知问题与技术债
+- 提供给 AI 的元规则（行为准则、文档维护）
+
+### 7. 灵活的目录结构
+
+- 支持版本优先模式（适合快速迭代项目）
+- 支持类型优先模式（适合文档驱动项目）
+- 自动识别项目使用的目录结构模式
 
 ## 许可证
 
