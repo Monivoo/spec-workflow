@@ -163,7 +163,7 @@ Skill 会自动识别项目使用的目录结构模式，并按对应模式生�
 
 ```text
 .
-├── SKILL_v2.md              # Skill 定义文件（v2 增强版）
+├── SKILL.md                 # Skill 定义文件
 ├── assets/
 │   ├── prd_template.md      # PRD 文档模板
 │   ├── design_template.md   # 设计文档模板
@@ -251,36 +251,3 @@ Skill 会自动识别项目使用的目录结构模式，并按对应模式生�
 - 支持版本优先模式（适合快速迭代项目）
 - 支持类型优先模式（适合文档驱动项目）
 - 自动识别项目使用的目录结构模式
-
-## 🔗 相关项目
-
-### Claude Code Skills 集合
-实用工具和自动化脚本的 Skills 集合，涵盖视频处理、内容发布、安全加固等多个领域。
-
-**精选 Skills**：
-- 🎙️ **youtube-to-xiaoyuzhou** - YouTube 视频自动发布到小宇宙播客
-- 🎵 **voice-changer** - RVC AI 音频变声处理
-- 📹 **youtube-to-blog-post** - YouTube 视频转 SEO 优化博客文章
-- 🔒 **vps-security-hardening** - VPS 安全加固自动化
-- 📺 **youtube-publisher** - 视频上传到 YouTube（支持封面、字幕）
-- 🎨 **image-generator** - 多模型 AI 图片生成（ModelScope、Gemini）
-- ✂️ **audiocut-keyword** - 音频关键字过滤工具
-- 🎙️ **text-to-speech** - 文本转语音（Edge TTS + Kokoro TTS，102 个中文音色）
-- 📹 **video-downloader** - YouTube 视频下载（多质量、多格式）
-- 🔥 **code-roaster** - Gordon Ramsay 风格代码审查
-- 📋 **invoice-scanner** - 发票识别与分类统计
-- 🐦 **x-fetcher** - X (Twitter) 推文和长文章抓取
-- 📰 **wespy-fetcher** - 微信公众号文章抓取
-- 📦 **quark-mswnlz-publisher** - 夸克网盘资源自动发布
-- 📺 **youtube-tracker** - YouTube 频道新视频追踪
-- 更多实用 Skills...
-
-**仓库地址**：[wlzh/skills](https://github.com/wlzh/skills)
-
----
-
-## 许可证
-
-MIT，详见 `LICENSE`。
-
-项目认可 https://linux.do/
