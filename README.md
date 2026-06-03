@@ -8,10 +8,11 @@
 
 默认按以下顺序推进：
 
-`prd.md（确认） → design.md / dev.md（确认） → plan.md → ops.md / test.md → CHANGELOG.md / CLAUDE.md → docs/prd/README.md`
+`需求澄清（按需） → prd.md（确认） → design.md / dev.md（确认） → plan.md → ops.md / test.md → CHANGELOG.md / CLAUDE.md → docs/prd/README.md`
 
 其中：
 
+- 需求不完整、边界模糊，或用户要求“拷问 / grill me / 压测方案”时，先一问一答澄清需求，每个问题给出推荐答案
 - `prd.md` 生成后需要用户确认，再进入设计和技术文档阶段
 - `dev.md` 生成后需要再次确认，再输出开发计划
 - `plan.md` 只负责排期、任务、风险，不重复技术实现内容
@@ -21,6 +22,7 @@
 ## 能力范围
 
 - **生成模式**：从零产出完整项目文档链路，覆盖 `prd.md`、`design.md`、`dev.md`、`plan.md`、`ops.md`、`test.md`、`CHANGELOG.md`、`CLAUDE.md`
+- **需求澄清**：当需求不完整或用户要求“grill me / 拷问方案”时，先逐项追问并给出推荐答案，再生成 PRD
 - **管理模式**：维护已有 `docs/prd/<version>/` 文档，支持查看、扩展、对比、搜索、归档
 - **迭代模式**：支持语义化版本管理（major.minor.patch），自动识别变更类型并更新版本号
 - **测试驱动**：强制要求代码变更必须同步更新测试，支持 PRD ↔ Code 双向验证
