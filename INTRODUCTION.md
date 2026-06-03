@@ -1,4 +1,4 @@
-# prd-manager v2.0 — AI 驱动的项目全生命周期管理 Skill
+# spec-workflow v3.0 — AI 驱动的项目全生命周期管理 Skill
 
 > 从需求到上线，让 AI 成为你的项目管理专家
 
@@ -6,7 +6,7 @@
 
 ## 🎯 这是什么？
 
-**prd-manager** 是一个专为 AI 协作设计的项目文档管理 Skill，它不仅仅是文档模板库，更是一个**完整的 AI 协作流程引擎**。
+**spec-workflow** 是一个专为 AI 协作设计的项目文档管理 Skill，它不仅仅是文档模板库，更是一个**完整的 AI 协作流程引擎**。
 
 通过结构化的文档体系 + 智能对话流程，让 AI 能够：
 - 从零搭建完整的项目文档体系
@@ -29,7 +29,7 @@
 ❌ **部署靠记忆**：每次部署都要回忆上次怎么操作的，容易出错  
 ❌ **事故重复发生**：同样的坑踩了两次，因为没有记录和复盘  
 
-### prd-manager 的解决方案
+### spec-workflow 的解决方案
 
 ✅ **AI 主动引导**：通过对话追问，把模糊想法整理成清晰需求  
 ✅ **文档代码同步**：PRD ↔ 代码双向验证，确保一致性  
@@ -536,20 +536,20 @@ AI：[生成事故记录]
 ### 方式 1：通过 Claude Code Skill 目录安装
 
 ```bash
-git clone https://github.com/wlzh/prd-manager ~/.claude/skills/prd-manager
+git clone https://github.com/Monivoo/spec-workflow ~/.claude/skills/spec-workflow
 ```
 
 ### 方式 2：手动安装
 
 1. 下载 Skill 文件
-2. 放到 `~/.claude/skills/prd-manager/` 目录
+2. 放到 `~/.claude/skills/spec-workflow/` 目录
 3. 重启 Claude Code
 
 ### 验证安装
 
 ```bash
 # 在 Claude Code 中输入
-/prd-manager 帮我创建一个 v0.1.0 的项目文档
+/spec-workflow 帮我创建一个 v0.1.0 的项目文档
 
 # 如果 AI 开始询问项目信息，说明安装成功
 ```
@@ -561,7 +561,7 @@ git clone https://github.com/wlzh/prd-manager ~/.claude/skills/prd-manager
 ### 第一步：创建项目文档
 
 ```
-你：/prd-manager 我想做一个博客系统，Next.js + PostgreSQL
+你：/spec-workflow 我想做一个博客系统，Next.js + PostgreSQL
 
 AI：好的，我需要先了解几个问题：
     1. 项目名称是什么？
@@ -584,7 +584,7 @@ AI：[生成完整文档体系]
 ### 第三步：功能迭代
 
 ```
-你：/prd-manager 在 v0.1.0 基础上新增搜索功能
+你：/spec-workflow 在 v0.1.0 基础上新增搜索功能
 
 AI：[识别变更类型：Minor]
     [建议版本号：v0.2.0]
@@ -598,7 +598,7 @@ AI：[识别变更类型：Minor]
 ### 问题反馈
 
 如果遇到问题或有建议，欢迎：
-- 提 Issue：https://github.com/wlzh/prd-manager/issues
+- 提 Issue：https://github.com/Monivoo/spec-workflow/issues
 - 发邮件：support@xripple.app
 
 ### 贡献代码
@@ -621,7 +621,7 @@ MIT License
 ---
 
 **最后更新**：2026-05-03
-**当前版本**：v2.0.0
+**当前版本**：v3.0.0
 **作者**：wlzh
 **邮箱**：support@xripple.app
-**仓库**：https://github.com/wlzh/prd-manager
+**仓库**：https://github.com/Monivoo/spec-workflow

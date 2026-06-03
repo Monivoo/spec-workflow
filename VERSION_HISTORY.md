@@ -2,6 +2,22 @@
 
 ## 版本历史
 
+### v3.0.0 (2026-06-03)
+
+**重大更新**：项目和 Skill 入口从 prd-manager 更名为 spec-workflow
+
+#### 🔧 变更
+
+- Skill frontmatter 名称从 `prd-manager` 改为 `spec-workflow`
+- 文档标题、安装路径、调用示例统一改为 `spec-workflow`
+- agents 元数据和 evals Skill 名称同步更新
+- 新仓库目标调整为 `Monivoo/spec-workflow`
+
+#### ⚠️ 破坏性变更
+
+- Skill 调用入口从 `/prd-manager` 改为 `/spec-workflow`
+- 推荐安装目录从 `~/.claude/skills/prd-manager` 改为 `~/.claude/skills/spec-workflow`
+
 ### v2.0.0 (2026-05-03)
 
 **重大更新**：从文档模板库升级为完整的 AI 协作流程引擎

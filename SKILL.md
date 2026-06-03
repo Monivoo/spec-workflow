@@ -1,10 +1,10 @@
 ---
-name: prd-manager
-version: 2.0.0
+name: spec-workflow
+version: 3.0.0
 description: 统一管理和生成 docs/ 目录下的版本化项目文档。支持从零创建完整项目文档、增量迭代版本、测试驱动开发、PRD↔代码双向验证、运维文档、事故记录、CLAUDE.md 项目记忆体。覆盖项目全生命周期：规划→开发→测试→部署→运维→审计→迭代。
 ---
 
-# PRD 管理器 v2.0.0
+# Spec Workflow v3.0.0
 
 统一管理项目文档的完整生命周期 Skill，覆盖从需求规划到生产运维的全流程。
 
