@@ -1,14 +1,18 @@
-# spec-workflow v3.0.0
+# Spec-workflow v3.0.0
 
-一个辅助 Vibe Coding 的 Skill 工具，通过生成结构化的版本需求文档，来指导 AI 进行 Coding ，提升 Coding 的准确性。
+> 一个面向 AI 协作开发的文档驱动工作流 Skill，通过结构化、版本化的项目文档，将需求、设计、实现、测试、运维和迭代过程串联起来，为 AI Coding 提供稳定上下文，提升开发的准确性、可控性与可追溯性。
 
-**当前版本**：v3.0.0 | [版本历史](VERSION_HISTORY.md)
+在 AI Coding 中，真正影响交付质量的往往不是模型是否会写代码，而是需求是否清晰、边界是否明确、技术方案是否可执行、验证标准是否完整。`spec-workflow` 通过文档先行，把模糊想法沉淀为可确认、可追踪、可迭代的开发上下文，让 AI 沿着明确规格参与完整开发流程。
 
-## 事前确认流程
+**当前版本**：v3.0.0
 
-默认按以下顺序推进：
+## 工作流总览
 
-`需求澄清（按需） → prd.md（确认） → design.md / dev.md（确认） → plan.md → ops.md / test.md → CHANGELOG.md / CLAUDE.md → docs/prd/README.md`
+`spec-workflow` 默认按文档驱动开发流程推进：
+
+![spec-workflow workflow](assets/spec-workflow-workflow.png)
+
+
 
 其中：
 
@@ -32,10 +36,40 @@
 
 ## 安装方式
 
+### macOS / Linux
+
 如果你通过 Skill 目录安装，可参考：
 
 ```bash
 git clone https://github.com/Monivoo/spec-workflow ~/.claude/skills/spec-workflow
+```
+
+### Windows
+
+在 Windows 上，可克隆到当前用户的 Claude Skills 目录：
+
+```powershell
+git clone https://github.com/Monivoo/spec-workflow $env:USERPROFILE\.claude\skills\spec-workflow
+```
+
+也可以使用 CMD：
+
+```cmd
+git clone https://github.com/Monivoo/spec-workflow %USERPROFILE%\.claude\skills\spec-workflow
+```
+
+### 手动复制
+
+如果你已经拿到了 `spec-workflow` 文件夹，也可以直接将整个文件夹复制到 Claude Skills 目录下：
+
+```text
+~/.claude/skills/spec-workflow
+```
+
+Windows 对应路径通常为：
+
+```text
+%USERPROFILE%\.claude\skills\spec-workflow
 ```
 
 ## 适用场景
@@ -51,7 +85,7 @@ git clone https://github.com/Monivoo/spec-workflow ~/.claude/skills/spec-workflo
 - **事故复盘**：提供事故记录模板，沉淀经验、防止重复发生
 - **AI 协作**：通过 CLAUDE.md 为 AI 助手提供项目上下文，提升协作效率
 
-## 确认输出边界
+## 文档职责边界
 
 | 文档 | 关注点 |
 |------|--------|
